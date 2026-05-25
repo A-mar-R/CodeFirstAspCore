@@ -13,6 +13,6 @@ namespace CodeFirstAspCore.Models
         [Column("StudentGender", TypeName = "nvarchar(20)")]
         public string Gender { get; set; }
         public int Age { get; set; }
-        public int Standard { get; set; }
+        public string Standard { get; set; }
     }
 }

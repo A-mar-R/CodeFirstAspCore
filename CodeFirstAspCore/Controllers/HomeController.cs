@@ -37,7 +37,7 @@ namespace CodeFirstAspCore.Controllers
             return View(std);
         }
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
             if(id== null  || studentDB.Students == null)
             {
@@ -53,13 +53,56 @@ namespace CodeFirstAspCore.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-
-            var stddata = await studentDB.Students.FindAsync(id);
+            if(id == null || studentDB.Students == null)
+            {
+                return NotFound();
+            }
+            var stddata = await studentDB.Students.FindAsync(id);  
+            if(stddata == null)
+            {
+                return NotFound();
+            }
             return View(stddata);
         }
-        public IActionResult Privacy()
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Student std)
         {
-            return View();
+            if(id != std.Id)
+            {
+                return NotFound();
+            }
+            if(ModelState.IsValid)
+            {
+                studentDB.Students.Update(std);
+                await studentDB.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(std);
+        }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if(id == null || studentDB.Students == null)
+            {
+                return NotFound();
+            }
+            var stddata = await studentDB.Students.FirstOrDefaultAsync(x => x.Id == id);
+            if (stddata == null)
+            {
+                return NotFound();
+            }
+            return View(stddata);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var student = await studentDB.Students.FindAsync(id);
+            if (student != null)
+            {
+                studentDB.Students.Remove(student);
+                await studentDB.SaveChangesAsync();
+            }
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

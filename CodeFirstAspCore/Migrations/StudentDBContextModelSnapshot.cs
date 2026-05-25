@@ -42,8 +42,9 @@ namespace CodeFirstAspCore.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("StudentName");
 
-                    b.Property<int>("Standard")
-                        .HasColumnType("int");
+                    b.Property<string>("Standard")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodeFirstAspCore.Migrations
 {
     [DbContext(typeof(StudentDBContext))]
-    [Migration("20260524151732_CodeFirstCreateDb")]
-    partial class CodeFirstCreateDb
+    [Migration("20260525110248_StudentsDbb")]
+    partial class StudentsDbb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,6 +44,10 @@ namespace CodeFirstAspCore.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("StudentName");
+
+                    b.Property<string>("Standard")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
