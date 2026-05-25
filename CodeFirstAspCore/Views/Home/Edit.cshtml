@@ -33,6 +33,7 @@
                 <input asp-for="Standard" class="form-control" />
                 <span asp-validation-for="Standard" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -41,7 +42,8 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <br />
+    <input type="button" value="Back To List" class="btn btn-secondary" onclick="location.href='@Url.Action("Index", "Home")'" />
 </div>
 
 @section Scripts {
