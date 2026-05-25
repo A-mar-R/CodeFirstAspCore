@@ -5,7 +5,7 @@
 namespace CodeFirstAspCore.Migrations
 {
     /// <inheritdoc />
-    public partial class StudentsDbb : Migration
+    public partial class StudentData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

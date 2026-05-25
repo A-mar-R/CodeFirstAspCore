@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodeFirstAspCore.Migrations
 {
     [DbContext(typeof(StudentDBContext))]
-    [Migration("20260525110248_StudentsDbb")]
-    partial class StudentsDbb
+    [Migration("20260525123659_StudentData")]
+    partial class StudentData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
