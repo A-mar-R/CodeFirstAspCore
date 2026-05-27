@@ -44,3 +44,6 @@ body {
     color: black; /* text color */
     border:  1px groove black;
 }
+body {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+}
