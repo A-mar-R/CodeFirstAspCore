@@ -1,6 +1,7 @@
 using CodeFirstAspCore.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Rotativa.AspNetCore;
 using System.Diagnostics;
 
 namespace CodeFirstAspCore.Controllers
@@ -32,6 +33,7 @@ namespace CodeFirstAspCore.Controllers
             {
                await studentDB.Students.AddAsync(std);
                 await studentDB.SaveChangesAsync();
+                TempData["success"] = "Student created successfully!";
                 return RedirectToAction("Index");
             }
             return View(std);
@@ -74,6 +76,7 @@ namespace CodeFirstAspCore.Controllers
             if(ModelState.IsValid)
             {
                 studentDB.Students.Update(std);
+                TempData["Update"] = "Student updated successfully!";
                 await studentDB.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -100,9 +103,20 @@ namespace CodeFirstAspCore.Controllers
             if (student != null)
             {
                 studentDB.Students.Remove(student);
-                await studentDB.SaveChangesAsync();
+                
             }
+            await studentDB.SaveChangesAsync();
+            TempData["delete"] = "Student deleted successfully!";
             return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> Print()
+        {
+            var data = await studentDB.Students.ToListAsync();
+
+            return new ViewAsPdf("Print", data)
+            {
+                FileName = "Students.pdf"
+            };
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

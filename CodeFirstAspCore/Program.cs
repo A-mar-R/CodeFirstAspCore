@@ -1,10 +1,12 @@
 using CodeFirstAspCore.Models;
 using Microsoft.EntityFrameworkCore;
-
+using Rotativa.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
 
 var provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetRequiredService<IConfiguration>();
@@ -32,5 +34,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+RotativaConfiguration.Setup(app.Environment.WebRootPath, "Rotativa");
 
 app.Run();

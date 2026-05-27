@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CodeFirstAspCore.Models.Student>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+
+            body {
+                font-family: Arial;
+            }
+
+            h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                border: 1px solid black;
+                padding: 10px;
+                text-align: center;
+            }
+
+            th {
+                background-color: lightgray;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Students List</h2>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Standard</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Gender</td>
+                    <td>@item.Age</td>
+                    <td>@item.Standard</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</body>
+</html>

@@ -29,3 +29,18 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+.success-alert {
+    background-color: lightgreen; /* your color */
+    color: black; /* text color */
+    border: 1px groove black;
+}
+.update-alert {
+    background-color: lightblue; /* your color */
+    color: black; /* text color */
+    border: 1px groove black;
+}
+.delete-alert {
+    background-color: lightcoral; /* your color */
+    color: black; /* text color */
+    border:  1px groove black;
+}
